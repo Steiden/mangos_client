@@ -1,0 +1,27 @@
+@import "@styles/style.scss";
+
+.header {
+	@include flex($justify: space-between, $align: center, $gap: 15px);
+
+	& {
+        padding: 10px 20px;
+        
+        height: 60px;
+		max-width: 1920px;
+	}
+
+	&__wrapper {
+		@include flex-center;
+
+		& {
+			background: var(--blue-color);
+		}
+	}
+
+	&__right {
+		@include flex($align: center, $gap: 30px);
+	}
+	&__list {
+		@include flex($align: center, $gap: 20px);
+	}
+}

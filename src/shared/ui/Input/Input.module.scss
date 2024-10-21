@@ -1,0 +1,59 @@
+@import "@shared/styles/style.scss";
+
+.input {
+    @include font;
+
+    background: inherit;
+    border-radius: inherit;
+
+    padding: 8px 18px;
+
+    height: 100%;
+    width: 100%;
+
+    &--active {
+        & + .input__label {
+            background: #fff;
+            border: 1px solid var(--blue-color);
+            border-radius: 5px;
+
+            color: var(--text-alt-color);            
+            font-size: 10px;
+            font-weight: 400;
+            
+            left: 11px;
+            top: 0;
+
+            padding: 0.5px 2px;
+        }
+    }
+
+    &__container {
+        background: #fff;
+        border: 2px solid var(--blue-color);
+        border-radius: 12px;
+
+        color: var(--text-alt-color);
+        font-size: 15px;
+        font-weight: 400;
+
+        position: relative;
+
+        min-height: 39px;
+    }
+
+    &__label {
+        @include font($color: var(--text-light-color));
+
+        position: absolute;
+        left: 18px;
+        top: 50%;
+        translate: 0 -50%;
+
+        transition: all .2s linear;
+    }
+
+    &__error {
+
+    }
+}

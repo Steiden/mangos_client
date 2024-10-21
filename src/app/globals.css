@@ -2,6 +2,10 @@
 	--blue-color: #3358c5;
 	--green-color: #1fe910;
 	--red-color: #ff1a1a;
+
+	--text-color: #fff;
+	--text-alt-color: #000;
+	--text-light-color: #c3c3c3;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -9,11 +13,16 @@
 		--blue-color: #3358c5;
 		--green-color: #1fe910;
 		--red-color: #ff1a1a;
+
+		--text-color: #fff;
+		--text-alt-color: #000;
+		--text-light-color: #c3c3c3;
 	}
 }
 
 html,
 body {
+	color: var(--text-color);
 	max-width: 100vw;
 	overflow-x: hidden;
 }
@@ -37,8 +46,95 @@ a {
 	text-decoration: none;
 }
 
+input,
+select,
+button,
+textarea {
+	border: none;
+	outline: none;
+}
+
 @media (prefers-color-scheme: dark) {
 	html {
 		color-scheme: dark;
 	}
+}
+
+@font-face {
+	font-display: auto;
+	font-family: "Iconly";
+	font-style: normal;
+	font-weight: 400;
+	src: url("/fonts/mangos-font/iconly.eot?1729512225823");
+	src: url("/fonts/mangos-font/iconly.eot?#iefix") format("embedded-opentype"),
+		url("/fonts/mangos-font/iconly.woff2?1729512225823") format("woff2"),
+		url("/fonts/mangos-font/iconly.woff?1729512225823") format("woff"),
+		url("/fonts/mangos-font/iconly.ttf?1729512225823") format("truetype"),
+		url("/fonts/mangos-font/iconly.svg?1729512225823#Iconly") format("svg");
+}
+
+[class="icon"],
+[class^="icon-"],
+[class*=" icon-"] {
+	display: inline-block;
+	font-family: "Iconly" !important;
+	font-weight: 400;
+	font-style: normal;
+	font-variant: normal;
+	text-rendering: auto;
+	line-height: 1;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+}
+
+.task_icon:before {
+	content: "\e000";
+}
+
+.sort_icon:before {
+	content: "\e001";
+}
+
+.search_icon:before {
+	content: "\e002";
+}
+
+.robot_icon:before {
+	content: "\e003";
+}
+
+.plus_icon:before {
+	content: "\e004";
+}
+
+.message_icon:before {
+	content: "\e005";
+}
+
+.folder_icon:before {
+	content: "\e006";
+}
+
+.filter_icon:before {
+	content: "\e007";
+}
+
+.calendar_icon:before {
+	content: "\e008";
+}
+
+.bell_icon:before {
+	content: "\e009";
+}
+
+.arrow_icon:before {
+	content: "\e00a";
+}
+
+.accept_icon:before {
+	content: "\e00b";
+}
+
+.icon-arrow_bold_icon:before {
+	content: "\e00c";
 }

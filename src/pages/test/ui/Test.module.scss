@@ -1,0 +1,15 @@
+@import '@shared/styles/style.scss';
+
+.test {
+    @include flex($direction: column, $gap: 50px);
+
+    padding: 50px;
+    height: 100dvh;
+
+    &__title {
+    }
+    
+    &__container {
+        @include flex($direction: column, $gap: 20px);
+    }
+}
