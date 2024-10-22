@@ -4,6 +4,7 @@ export enum EndpointKeys {
     login = 'login',
     refresh = 'refresh',
     logout = 'logout',
+    me = 'me',
     activity_types = 'activity_types',
     automation_actions = 'automation_actions',
     automation_conditions = 'automation_conditions',
@@ -45,9 +46,10 @@ export enum EndpointKeys {
 };
 
 export const endpoints: Record<EndpointKeys, string> = {
-    login: `${BASE_URL}/token/login`,
-    refresh: `${BASE_URL}/token/refresh`,
-    logout: `${BASE_URL}/token/logout`,
+    login: `${BASE_URL}/auth/login`,
+    refresh: `${BASE_URL}/auth/refresh`,
+    logout: `${BASE_URL}/auth/logout`,
+    me: `${BASE_URL}/auth/me`,    
     activity_types: `${BASE_URL}/activity_types`,
     automation_actions: `${BASE_URL}/automation_actions`,
     automation_conditions: `${BASE_URL}/automation_conditions`,

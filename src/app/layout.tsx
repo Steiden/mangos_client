@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Lexend } from 'next/font/google';
 import "./globals.css";
+import { Header } from "@/widgets/Header/ui/Header";
 
 const lexend = Lexend({
   subsets: ['latin'],
@@ -21,6 +22,7 @@ export default function RootLayout({
   return (
     <html lang="ru">
       <body className={lexend.className}>
+        <Header />
         {children}
       </body>
     </html>

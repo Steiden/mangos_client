@@ -50,8 +50,13 @@ input,
 select,
 button,
 textarea {
+	background: none;
 	border: none;
 	outline: none;
+}
+
+button {
+	cursor: pointer;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -73,9 +78,9 @@ textarea {
 		url("/fonts/mangos-font/iconly.svg?1729512225823#Iconly") format("svg");
 }
 
-[class="icon"],
-[class^="icon-"],
-[class*=" icon-"] {
+[class="mangos"],
+[class^="mangos-"],
+[class*=" mangos-"] {
 	display: inline-block;
 	font-family: "Iconly" !important;
 	font-weight: 400;
@@ -87,54 +92,54 @@ textarea {
 	-webkit-font-smoothing: antialiased;
 }
 
-.task_icon:before {
+.mangos-task_icon:before {
 	content: "\e000";
 }
 
-.sort_icon:before {
+.mangos-sort_icon:before {
 	content: "\e001";
 }
 
-.search_icon:before {
+.mangos-search_icon:before {
 	content: "\e002";
 }
 
-.robot_icon:before {
+.mangos-robot_icon:before {
 	content: "\e003";
 }
 
-.plus_icon:before {
+.mangos-plus_icon:before {
 	content: "\e004";
 }
 
-.message_icon:before {
+.mangos-message_icon:before {
 	content: "\e005";
 }
 
-.folder_icon:before {
+.mangos-folder_icon:before {
 	content: "\e006";
 }
 
-.filter_icon:before {
+.mangos-filter_icon:before {
 	content: "\e007";
 }
 
-.calendar_icon:before {
+.mangos-calendar_icon:before {
 	content: "\e008";
 }
 
-.bell_icon:before {
+.mangos-bell_icon:before {
 	content: "\e009";
 }
 
-.arrow_icon:before {
+.mangos-arrow_icon:before {
 	content: "\e00a";
 }
 
-.accept_icon:before {
+.mangos-accept_icon:before {
 	content: "\e00b";
 }
 
-.icon-arrow_bold_icon:before {
+.mangos-arrow-bold_icon:before {
 	content: "\e00c";
 }

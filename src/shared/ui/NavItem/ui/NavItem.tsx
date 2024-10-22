@@ -1,7 +1,7 @@
 'use client';
 
 import { ReactNode } from 'react';
-import styles from './HeaderItem.module.scss';
+import styles from './NavItem.module.scss';
 
 type Props = {
     children?: ReactNode;

@@ -4,9 +4,9 @@
 	@include flex($justify: space-between, $align: center, $gap: 15px);
 
 	& {
-        padding: 10px 20px;
-        
-        height: 60px;
+		padding: 10px 20px;
+		height: 100%;
+		width: 100%;
 		max-width: 1920px;
 	}
 
@@ -15,7 +15,15 @@
 
 		& {
 			background: var(--blue-color);
+			height: 60px;
 		}
+	}
+
+	&__logo {
+		height: 100%;
+	}
+	&__logo-image {
+		height: 100%;
 	}
 
 	&__right {
