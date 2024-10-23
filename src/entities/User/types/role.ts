@@ -1,4 +1,8 @@
 export type Role = {
-    id: number;
-    name: string;
-}
+	id: number;
+	name: string;
+	created_at: Date;
+	updated_at: Date;
+};
+
+export type RoleFillable = Pick<Role, "name">;

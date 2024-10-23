@@ -2,13 +2,18 @@ import { Chat } from "@entities/Chat/types/chat";
 import { ActivityType } from "./activityType";
 
 export type Organization = {
-    id: number;
-    full_name: string;
-    name: string;
-    address: string;
-    phone: string;
-    activity_type: ActivityType;
-    chat: Chat
-    created_at: Date;
-    updated_at: Date;
-}
+	id: number;
+	full_name: string;
+	name: string;
+	address: string;
+	phone: string;
+	activity_type: ActivityType;
+	chat: Chat;
+	created_at: Date;
+	updated_at: Date;
+};
+
+export type OrganizationFillabe = Pick<
+	Organization,
+	"full_name" | "name" | "address" | "phone" | "activity_type" | "chat"
+>;
