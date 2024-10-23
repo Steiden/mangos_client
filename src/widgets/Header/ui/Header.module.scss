@@ -32,4 +32,8 @@
 	&__list {
 		@include flex($align: center, $gap: 20px);
 	}
+
+	&__auth-buttons {
+		@include flex($align: center, $gap: 10px);
+	}
 }
