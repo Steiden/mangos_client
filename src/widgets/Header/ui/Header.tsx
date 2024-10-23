@@ -4,6 +4,7 @@ import { NavItem } from "@/shared/ui/NavItem/ui/NavItem";
 import styles from "./Header.module.scss";
 import Link from "next/link";
 import { HeaderProfile } from "@/widgets/HeaderProfile/ui/HeaderProfile";
+import { SearchInput } from "@/shared/ui/SearchInput/ui/SearchInput";
 
 export const Header = () => {
 	const navItems = [
@@ -35,11 +36,11 @@ export const Header = () => {
 						className={`${styles["header__logo-image"]}`}
 					/>
 				</Link>
-				{/* Search input component */}
+				<SearchInput placeholder="Найдите, что нужно" />
 				<div className={`${styles["header__right"]}`}>
 					<ul className={`${styles["header__list"]}`}>
 						{navItems.map((navItem) => (
-							<NavItem label={navItem.label} icon={navItem.icon} />
+							<NavItem label={navItem.label} icon={navItem.icon} key={navItem.label} />
 						))}
 					</ul>
 					<HeaderProfile />

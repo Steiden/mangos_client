@@ -4,7 +4,6 @@
 	@include flex($align: center, $gap: 9px);
 
 	& {
-		cursor: pointer;
 		border-radius: 6px;
 		padding: 3px 5px;
 		transition: all 0.3s linear;

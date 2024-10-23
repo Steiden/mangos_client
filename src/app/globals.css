@@ -5,7 +5,12 @@
 
 	--text-color: #fff;
 	--text-alt-color: #000;
-	--text-light-color: #c3c3c3;
+	--text-light-color: #BABABA;
+
+	--primary-background-color: #fff;
+
+	--primary-icon-color: #000;
+	--secondary-icon-color: #fff;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -16,7 +21,12 @@
 
 		--text-color: #fff;
 		--text-alt-color: #000;
-		--text-light-color: #c3c3c3;
+		--text-light-color: #BABABA;
+
+		--primary-background-color: #fff;
+
+		--primary-icon-color: #000;
+		--secondary-icon-color: #fff;
 	}
 }
 
@@ -46,6 +56,11 @@ a {
 	text-decoration: none;
 }
 
+ul {
+	list-style: none;
+}
+
+hr,
 input,
 select,
 button,
@@ -53,6 +68,10 @@ textarea {
 	background: none;
 	border: none;
 	outline: none;
+}
+
+input::placeholder {
+	color: var(--text-light-color);
 }
 
 button {
@@ -70,12 +89,12 @@ button {
 	font-family: "Iconly";
 	font-style: normal;
 	font-weight: 400;
-	src: url("/fonts/mangos-font/iconly.eot?1729512225823");
+	src: url("/fonts/mangos-font/iconly.eot?1729657856135");
 	src: url("/fonts/mangos-font/iconly.eot?#iefix") format("embedded-opentype"),
-		url("/fonts/mangos-font/iconly.woff2?1729512225823") format("woff2"),
-		url("/fonts/mangos-font/iconly.woff?1729512225823") format("woff"),
-		url("/fonts/mangos-font/iconly.ttf?1729512225823") format("truetype"),
-		url("/fonts/mangos-font/iconly.svg?1729512225823#Iconly") format("svg");
+		url("/fonts/mangos-font/iconly.woff2?1729657856135") format("woff2"),
+		url("/fonts/mangos-font/iconly.woff?1729657856135") format("woff"),
+		url("/fonts/mangos-font/iconly.ttf?1729657856135") format("truetype"),
+		url("/fonts/mangos-font/iconly.svg?1729657856135#Iconly") format("svg");
 }
 
 [class="mangos"],
@@ -142,4 +161,40 @@ button {
 
 .mangos-arrow-bold_icon:before {
 	content: "\e00c";
+}
+
+.mangos-user_icon:before {
+	content: "\e00d";
+}
+
+.mangos-upload_icon:before {
+	content: "\e00e";
+}
+
+.mangos-settings_icon:before {
+	content: "\e00f";
+}
+
+.mangos-logout_icon:before {
+	content: "\e010";
+}
+
+.mangos-ellipsys_icon:before {
+	content: "\e011";
+}
+
+.mangos-copy_icon:before {
+	content: "\e012";
+}
+
+.mangos-company_icon:before {
+	content: "\e013";
+}
+
+.mangos-close_icon:before {
+	content: "\e014";
+}
+
+.mangos-chart_icon:before {
+	content: "\e015";
 }
