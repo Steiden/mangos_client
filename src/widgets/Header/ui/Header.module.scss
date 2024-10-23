@@ -9,13 +9,15 @@
 		width: 100%;
 		max-width: 1920px;
 	}
-
+	
 	&__wrapper {
 		@include flex-center;
-
+		
 		& {
 			background: var(--blue-color);
+			border-bottom: 1px solid var(--primary-background-color);
 			height: 60px;
+			position: relative;
 		}
 	}
 
@@ -35,5 +37,32 @@
 
 	&__auth-buttons {
 		@include flex($align: center, $gap: 10px);
+	}
+
+	&__side {
+		@include flex($direction: column, $gap: 15px);
+
+		& {
+			background: var(--blue-color);
+			border: 1px solid var(--primary-background-color);
+			border-top: 1px solid var(--blue-color);
+			border-right: none;
+			border-bottom-left-radius: 25px;
+
+			position: absolute;
+			top: calc(100% - 1px);
+			right: 0;
+
+			padding: 10px 10px 20px 10px;
+		}
+
+		&-button {
+
+			&-icon {
+				&::before {
+					font-size: 20px;
+				}
+			}
+		}
 	}
 }

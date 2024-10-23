@@ -1,0 +1,68 @@
+@import "@styles/style.scss";
+
+.welcome {
+
+    &__title,
+    &__subtitle {
+        text-align: center;
+    }
+
+	&__title {
+		@include font($size: 68px, $weight: 700);
+	}
+
+	&__subtitle {
+		@include font($size: 38px, $weight: 500);
+	}
+
+	&__start {
+		@include flex-center($direction: column, $gap: 15px);
+
+		& {
+			height: 500px;
+		}
+	}
+	&__start-content {
+		@include flex-center($direction: column, $gap: 30px);
+
+        & {
+            max-width: 900px;
+        }
+	}
+	&__start-buttons {
+		@include flex($gap: 15px);
+	}
+	&__start-button {
+		@include font($size: 22px, $weight: 600);
+
+		& {
+			padding: 9px 30px;
+			height: 46px;
+		}
+
+        &--primary {
+            color: var(--text-alt-color);
+        }
+	}
+
+    &__advantages-list {
+        @include flex($align: center, $gap: 75px, $wrap: wrap);
+    }
+    &__advantage {
+        @include flex($direction: column, $gap: 15px);
+
+        & {
+            max-width: 350px;
+        }
+
+        &-icon {
+            &::before {
+                color: var(--secondary-icon-color);
+                font-size: 35px;
+            }
+        }
+        &-text {
+            @include font($size: 20px, $weight: 500);
+        }
+    }
+}

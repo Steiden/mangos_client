@@ -13,6 +13,8 @@
 
 	--primary-icon-color: #000;
 	--secondary-icon-color: #fff;
+
+	--background-4: #145E73;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -41,10 +43,11 @@ body {
 
 body {
 	color: var(--foreground);
-	background: var(--background);
+    background: var(--background-4);
 	font-family: Arial, Helvetica, sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	padding-bottom: 50px;
 }
 
 * {
@@ -199,6 +202,12 @@ button {
 
 .mangos-chart_icon:before {
 	content: "\e015";
+}
+
+.container {
+	max-width: 1920px;
+	padding-inline: 100px;
+	margin-inline: auto;
 }
 
 .auth-form {

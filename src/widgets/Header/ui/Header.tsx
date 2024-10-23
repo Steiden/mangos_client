@@ -72,6 +72,14 @@ export const Header = () => {
 					)}
 				</div>
 			</header>
+			<aside className={`${styles["header__side"]}`}>
+				<button className={`${styles["header__side-button"]}`}>
+					<span className={`mangos-bell_icon ${styles['header__side-button-icon']}`}></span>
+				</button>
+				<button className={`${styles["header__side-button"]}`}>
+					<span className={`mangos-message_icon ${styles['header__side-button-icon']}`}></span>
+				</button>
+			</aside>
 		</div>
 	);
 };

@@ -18,6 +18,8 @@
 
 		width: max-content;
 		min-width: 100%;
+
+		z-index: 10;
 	}
 
 	&:not(.action-dropdown--active) {
