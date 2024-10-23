@@ -1,3 +1,5 @@
+@import "@styles/style.scss";
+
 :root {
 	--blue-color: #3358c5;
 	--green-color: #1fe910;
@@ -5,7 +7,7 @@
 
 	--text-color: #fff;
 	--text-alt-color: #000;
-	--text-light-color: #BABABA;
+	--text-light-color: #bababa;
 
 	--primary-background-color: #fff;
 
@@ -21,7 +23,7 @@
 
 		--text-color: #fff;
 		--text-alt-color: #000;
-		--text-light-color: #BABABA;
+		--text-light-color: #bababa;
 
 		--primary-background-color: #fff;
 
@@ -197,4 +199,41 @@ button {
 
 .mangos-chart_icon:before {
 	content: "\e015";
+}
+
+.auth-form {
+	@include flex($align: center, $direction: column, $gap: 50px);
+
+	&__title {
+		@include font($size: 38px, $weight: 700, $color: var(--text-alt-color));
+	}
+
+	&__content {
+		@include flex($align: center, $direction: column, $gap: 25px);
+
+		& {
+			width: 100%;
+		}
+	}
+
+	&__input {
+		@include font($size: 22px);
+
+		& {
+			width: 100%;
+		}
+
+		input {
+			padding: 10px 22px;
+		}
+	}
+
+	button.auth-form__button {
+		@include font($size: 20px, $weight: 600, $color: var(--text-alt-color));
+
+		& {
+			padding: 9px 30px;
+			height: 46px;
+		}
+	}
 }

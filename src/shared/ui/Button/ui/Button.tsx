@@ -4,7 +4,7 @@ import styles from "./Button.module.scss";
 
 type Props = React.ButtonHTMLAttributes<HTMLButtonElement> & {
 	className?: string;
-	style?: "primary" | "secondary";
+	style?: "primary" | "secondary" | "thirdy";
 };
 
 export const Button = ({ className, style = "primary", children, ...rest }: Props) => {

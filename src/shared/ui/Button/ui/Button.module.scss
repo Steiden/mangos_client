@@ -33,4 +33,17 @@
             border-color: $background-hover-color;
         }
     }
+
+    &--thirdy {
+        $background-hover-color: rgba(51, 88, 197, 0.2);
+
+        color: var(--text-alt-color);
+        background: transparent;
+        border: 2px solid var(--blue-color);
+
+        &:hover {
+            background: $background-hover-color;
+            border-color: $background-hover-color;
+        }
+    }
 }

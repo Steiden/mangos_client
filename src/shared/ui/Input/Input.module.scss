@@ -11,6 +11,11 @@
     height: 100%;
     width: 100%;
 
+    &:-webkit-autofill {
+        background: inherit !important
+    }
+
+    &:-webkit-autofill, 
     &--active {
         & + .input__label {
             background: #fff;

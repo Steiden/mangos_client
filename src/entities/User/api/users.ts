@@ -3,86 +3,60 @@ import { User, UserFillable } from "../types/user";
 import { endpoints } from "@/shared/api";
 import { MangosResponse } from "@/shared/api/types/mangosResponse";
 import { Nullable } from "@/shared/types/nullable";
+import { handleResponse } from "@/shared/helpers/handleResponse";
+import { handleException } from "@/shared/helpers/handleException";
 
-export const getUsers = async (): Promise<User[]> => {
+export const getUsers = async (): Promise<MangosResponse<User[]>> => {
 	try {
 		const response: AxiosResponse<MangosResponse<User[]>> = await axios.get(endpoints.users);
-
-		if (!response.data?.success) {
-			throw new Error(`${response.data?.message}: ${response.data?.error}`);
-		}
-
-		return response.data?.data;
+		return handleResponse(response);
 	} catch (ex: unknown) {
-		if (ex instanceof Error) {
-			console.error(ex.message);
-		} else {
-			console.error("Неизвестная ошибка: " + ex);
-		}
-		return [];
+		return handleException(ex);
 	}
 };
 
-export const getUser = async (id: number): Promise<Nullable<User>> => {
+export const getUser = async (id: number): Promise<MangosResponse<Nullable<User>>> => {
 	try {
 		const response: AxiosResponse<MangosResponse<User>> = await axios.get(
 			`${endpoints.users}/${id}`
 		);
-
-		if (!response.data?.success) {
-			throw new Error(`${response.data?.message}: ${response.data?.error}`);
-		}
-
-		return response.data?.data;
+		return handleResponse(response);
 	} catch (ex: unknown) {
-		if (ex instanceof Error) {
-			console.error(ex.message);
-		} else {
-			console.error("Неизвестная ошибка: " + ex);
-		}
-		return null;
+		return handleException(ex);
 	}
 };
 
-export const updateUser = async (id: number, user: UserFillable): Promise<Nullable<User>> => {
+export const createUser = async (user: UserFillable): Promise<MangosResponse<Nullable<User>>> => {
+	try {
+		const response: AxiosResponse<MangosResponse<User>> = await axios.post(
+			endpoints.users,
+			user
+		);
+		return handleResponse(response);
+	} catch (ex: unknown) {
+		return handleException(ex);
+	}
+};
+
+export const updateUser = async (id: number, user: UserFillable): Promise<MangosResponse<Nullable<User>>> => {
 	try {
 		const response: AxiosResponse<MangosResponse<User>> = await axios.put(
 			`${endpoints.users}/${id}`,
 			user
 		);
-
-		if (!response.data?.success) {
-			throw new Error(`${response.data?.message}: ${response.data?.error}`);
-		}
-
-		return response.data?.data;
+		return handleResponse(response);
 	} catch (ex: unknown) {
-		if (ex instanceof Error) {
-			console.error(ex.message);
-		} else {
-			console.error("Неизвестная ошибка: " + ex);
-		}
-		return null;
+		return handleException(ex);
 	}
 };
 
-export const deleteUser = async (id: number): Promise<boolean> => {
+export const deleteUser = async (id: number): Promise<Omit<MangosResponse<any>, "data">> => {
 	try {
-		const response: AxiosResponse<MangosResponse<null>> = await axios.delete(
+		const response: AxiosResponse<MangosResponse<any>> = await axios.delete(
 			`${endpoints.users}/${id}`
 		);
-
-		if (!response.data?.success) {
-			throw new Error(`${response.data?.message}: ${response.data?.error}`);
-		}
-
-		return response.data?.success;
+		return handleResponse(response);
 	} catch (ex: unknown) {
-		if (ex instanceof Error) {
-			console.error(ex.message);
-		} else {
-			console.error("Неизвестная ошибка: " + ex);
-		}
-		return false;
+		return handleException(ex);
 	}
 };

@@ -9,7 +9,7 @@ export function useLocalStorage<T>(key: string, initial: any = null): [T, (value
                 localStorage.setItem(key, initial);
                 return initial;
             }
-            return item;
+            return JSON.parse(item);
         }
         catch(ex: unknown) {
             handleException(ex);

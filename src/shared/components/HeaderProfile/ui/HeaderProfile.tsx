@@ -1,13 +1,17 @@
 "use client";
 
-import { useUser } from "@/shared/hooks/useUser";
 import styles from "./HeaderProfile.module.scss";
 import { ActionDropdownInvoker } from "@/shared/ui/ActionDropdown/ui/ActionDropdownInvoker/ActionDropdownInvoker";
 import { DropdownAction } from "@/shared/ui/ActionDropdown/types/actionDropdown";
 import { useRouter } from "next/navigation";
+import { Nullable } from "@/shared/types/nullable";
+import { User } from "@/entities/User/types/user";
 
-export const HeaderProfile = () => {
-	const { user, loading, error } = useUser();
+type Props = {
+	user: Nullable<User>;
+}
+
+export const HeaderProfile = ({ user }: Props) => {
 	const router = useRouter();
 	const actions: DropdownAction[] = [
 		{

@@ -11,36 +11,44 @@ import { SuccessResponse } from "../api/types/successResponse";
 
 type UserError = string | null;
 
-export function useUser(): { user: Nullable<User>; loading: boolean; error: UserError } {
+export function useUser(): {
+	user: Nullable<User>;
+	loading: boolean;
+	error: UserError;
+	updateUser: () => void;
+} {
 	const [token] = useLocalStorage("token");
 	const [user, setUser] = useState<Nullable<User>>(null);
-    const [loading, setLoading] = useState<boolean>(true);
-    const [error, setError] = useState<UserError>(null);
+	const [loading, setLoading] = useState<boolean>(true);
+	const [error, setError] = useState<UserError>(null);
+
+	const updateUser = async (): Promise<void> => {
+		setLoading(true);
+		setError(null);
+
+		try {
+			const response: AxiosResponse<MeResponse> = await axios.get(endpoints.me, {
+				headers: {
+					Authorization: `Bearer ${token}`,
+				},
+				withCredentials: true,
+				withXSRFToken: true
+			});
+
+			if (!response.data.success) setError(response.data.error);
+
+			const user = (handleResponse(response) as SuccessResponse<User>).data;
+			setUser(user);
+		} catch (ex: unknown) {
+			return handleException(ex);
+		} finally {
+			setLoading(false);
+		}
+	};
 
 	useEffect(() => {
-		async function getUser(): Promise<void> {
-            setLoading(true);
-            setError(null);
-
-			try {
-				const response: AxiosResponse<MeResponse> = await axios.get(endpoints.me, {
-					headers: {
-						Authorization: `Bearer ${token}`,
-					},
-				});
-
-                if(!response.data.success) setError(response.data.error);
-
-                const user = (handleResponse(response) as SuccessResponse<User>).data;
-                setUser(user);
-			} catch (ex: unknown) {
-				return handleException(ex);
-			}
-		}
-
-		if(token) getUser();
-        setLoading(false);
+		if (token) updateUser();
 	}, [token]);
 
-	return { user, loading, error };
+	return { user, loading, error, updateUser };
 }
