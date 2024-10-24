@@ -1,0 +1,174 @@
+@import "@styles/style.scss";
+
+.messages {
+	@include flex;
+
+	& {
+		height: 100%;
+		width: 100%;
+		// width: 80vw;
+	}
+
+	&__side,
+	&__current {
+		height: 100%;
+	}
+
+	&__side {
+		@include flex($direction: column, $gap: 25px);
+
+		& {
+			background: var(--primary-background-color);
+			border-right: 1px solid var(--gray-color);
+			padding-block: 20px;
+			width: 470px;
+		}
+	}
+	&__actions {
+		@include flex($align: center, $gap: 15px);
+
+		& {
+			padding-inline: 30px;
+			width: 100%;
+		}
+	}
+	&__add {
+		&-icon {
+			&::before {
+				@include font($size: 25px, $color: var(--primary-icon-color));
+			}
+		}
+	}
+	&__search,
+	.messages__search {
+		font-size: 14px;
+		border: 1px solid var(--primary-icon-color);
+
+		.mangos-search_icon {
+			&::before {
+				font-size: 15px;
+			}
+		}
+	}
+	&__list {
+		@include flex($direction: column, $gap: 20px);
+		@include scrollbar;
+
+		& {
+			padding-inline: 20px;
+			padding-bottom: 20px;
+			width: 100%;
+			overflow-y: scroll;
+		}
+	}
+	&__item {
+		cursor: pointer;
+		width: 100%;
+	}
+
+	&__current,
+	&-current {
+		@include flex($direction: column);
+
+		& {
+			width: 100%;
+		}
+
+		&__header {
+			@include flex-center;
+
+			& {
+				background: var(--primary-background-color);
+				position: relative;
+				padding: 15px 20px;
+				height: 75px;
+				width: 100%;
+			}
+
+			&-content {
+				@include flex($align: center, $gap: 15px);
+			}
+		}
+		&__avatar {
+			object-fit: cover;
+			border-radius: 50%;
+			height: 45px;
+			width: 45px;
+		}
+		&__title {
+			@include font($size: 20px, $weight: 400, $color: var(--text-alt-color));
+		}
+		&__actions {
+			@include flex($align: center, $gap: 25px);
+
+			& {
+				position: absolute;
+				top: 50%;
+				right: 30px;
+				translate: 0 -50%;
+			}
+		}
+		&__action-button {
+			&-icon {
+				&::before {
+					@include font($size: 25px, $color: var(--primary-icon-color));
+				}
+			}
+		}
+
+		&__content {
+			height: 100%;
+			width: 100%;
+		}
+		&__list {
+			@include flex($direction: column, $gap: 40px);
+			@include scrollbar;
+
+			& {
+				padding: 20px;
+				height: 100%;
+				overflow: scroll;
+			}
+		}
+		&__item {
+			width: 100%;
+
+			&--me {
+				align-self: flex-end;
+			}
+		}
+
+		&__form {
+			@include flex($align: center, $gap: 10px);
+
+			& {
+				background: var(--primary-background-color);
+				padding: 15px 20px;
+				width: 100%;
+			}
+
+			&-button {
+				&-icon {
+					&::before {
+						@include font($size: 25px, $color: var(--primary-icon-color));
+					}
+				}
+
+				&-icon.mangos-send_icon {
+					&::before {
+						font-size: 30px;
+					}
+				}
+			}
+
+			&-input {
+				@include font($size: 20px, $weight: 400, $color: var(--text-alt-color));
+
+				& {
+					padding: 10px 15px;
+					width: 100%;
+				}
+			}
+		}
+	}
+}

@@ -4,13 +4,18 @@ import { endpoints } from ".";
 import { Nullable } from "../types/nullable";
 import { handleResponse } from "../helpers/handleResponse";
 import { handleException } from "../helpers/handleException";
+import { useLocalStorage } from "../hooks/useLocalStorage";
 
 export const login = async (loginData: LoginData): Promise<Nullable<LoginResponse>> => {
 	try {
+		const [token] = useLocalStorage("token");
 		const response: AxiosResponse<LoginResponse> = await axios.post(
 			endpoints.login,
 			loginData,
 			{
+				headers: {
+					Authorization: "Bearer " + token,
+				},
 				withCredentials: true,
 				withXSRFToken: true,
 			}

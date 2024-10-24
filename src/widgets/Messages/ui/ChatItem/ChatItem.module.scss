@@ -1,0 +1,40 @@
+@import "@styles/style.scss";
+
+.chat {
+	@include flex($align: center, $gap: 10px);
+
+	& {
+		background: var(--primary-background-color);
+		border-radius: 15px;
+		box-shadow: 0 4px 5px 1px rgba(0, 0, 0, 0.25);
+		padding: 10px;
+	}
+
+	&__avatar {
+		background: var(--gray-dark-color);
+		object-fit: cover;
+		border-radius: 50%;
+		height: 50px;
+		width: 50px;
+	}
+
+	&__content {
+		@include flex($direction: column, $gap: 2px);
+	}
+	&__title {
+        @include font($size: 18px, $weight: 400, $color: var(--text-alt-color));
+
+		& {
+			line-height: 1;
+		}
+	}
+	&__span {
+        @include font($size: 16px, $weight: 400, $color: var(--gray-dark-color));
+
+        & {
+            max-width: 100%;
+            text-wrap: nowrap;
+            text-overflow: ellipsis;
+        }
+	}
+}

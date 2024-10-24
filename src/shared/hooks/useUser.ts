@@ -35,10 +35,13 @@ export function useUser(): {
 				withXSRFToken: true
 			});
 
-			if (!response.data.success) setError(response.data.error);
+			if (!response.data.success) {
+				setError(response.data.error);
+				return;
+			}
 
-			const user = (handleResponse(response) as SuccessResponse<User>).data;
-			setUser(user);
+			const me = response.data.data;
+			setUser(me);
 		} catch (ex: unknown) {
 			return handleException(ex);
 		} finally {

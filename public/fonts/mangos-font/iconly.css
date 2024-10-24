@@ -7,8 +7,8 @@
   font-family: "Iconly";
   font-style: normal;
   font-weight: 400;
-  src: url("./iconly.eot?1729657856135");
-  src: url("./iconly.eot?#iefix") format("embedded-opentype"), url("./iconly.woff2?1729657856135") format("woff2"), url("./iconly.woff?1729657856135") format("woff"), url("./iconly.ttf?1729657856135") format("truetype"), url("./iconly.svg?1729657856135#Iconly") format("svg");
+  src: url("./iconly.eot?1729753015208");
+  src: url("./iconly.eot?#iefix") format("embedded-opentype"), url("./iconly.woff2?1729753015208") format("woff2"), url("./iconly.woff?1729753015208") format("woff"), url("./iconly.ttf?1729753015208") format("truetype"), url("./iconly.svg?1729753015208#Iconly") format("svg");
 }
 
 [class="mangos"], [class^="mangos-"], [class*=" mangos-"] {
@@ -109,4 +109,8 @@
 
 .mangos-chart_icon:before {
   content: "\e015";
+}
+
+.mangos-send_icon:before {
+  content: "\e016";
 }

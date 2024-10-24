@@ -10,6 +10,8 @@ import { Button } from "@/shared/ui/Button/ui/Button";
 import { ModalInvoker } from "@/shared/ui/Modal/ui/ModalInvoker/ModalInvoker";
 import { Login } from "./Login/Login";
 import { Registration } from "./Registration/Registration";
+import { SideModalInvoker } from "@/shared/ui/SideModal/ui/SideModalInvoker/SideModalInvoker";
+import { Messages } from "@/widgets/Messages/ui/Messages";
 
 export const Header = () => {
 	const { user, loading, error } = useUser();
@@ -76,9 +78,11 @@ export const Header = () => {
 				<button className={`${styles["header__side-button"]}`}>
 					<span className={`mangos-bell_icon ${styles['header__side-button-icon']}`}></span>
 				</button>
-				<button className={`${styles["header__side-button"]}`}>
-					<span className={`mangos-message_icon ${styles['header__side-button-icon']}`}></span>
-				</button>
+				<SideModalInvoker ModalContent={Messages} modalProps={{ title: "Сообщения" }}>
+					<button className={`${styles["header__side-button"]}`}>
+						<span className={`mangos-message_icon ${styles['header__side-button-icon']}`}></span>
+					</button>
+				</SideModalInvoker>
 			</aside>
 		</div>
 	);

@@ -8,3 +8,5 @@ export type ChatMember = {
     created_at: Date;
     updated_at: Date;
 }
+
+export type ChatMemberForCreate = Pick<ChatMember, "chat" | "user">;

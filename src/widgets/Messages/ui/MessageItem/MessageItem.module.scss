@@ -1,0 +1,56 @@
+@import "@styles/style.scss";
+
+.message {
+	@include flex($align: flex-end, $gap: 10px);
+
+	& {
+		width: 100%;
+		max-width: 550px;
+	}
+
+	&__avatar {
+		object-fit: cover;
+		border-radius: 50%;
+		height: 40px;
+		width: 40px;
+	}
+
+	&__content {
+		@include flex($direction: column, $gap: 5px);
+
+		& {
+			background: var(--primary-background-color);
+			border-radius: 25px;
+
+			padding: 10px 20px;
+            width: max-content;
+		}
+	}
+	&__text {
+        @include font($size: 20px, $weight: 400, $color: var(--text-alt-color));
+	}
+	&__info {
+        @include flex($gap: 15px);
+
+        & {
+            padding: 2px;
+        }
+	}
+	&__span {
+        &,
+        &::before {
+            @include font($size: 14px, $weight: 400, $color: var(--gray-color));
+
+            & {
+                align-self: flex-end;
+                width: 100%;
+            }
+        }
+
+		&--read {
+			&::before {
+				color: var(--blue-color);
+			}
+		}
+	}
+}

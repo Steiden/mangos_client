@@ -4,6 +4,8 @@
 	--blue-color: #3358c5;
 	--green-color: #1fe910;
 	--red-color: #ff1a1a;
+	--gray-color: #e8e8e8;
+	--gray-dark-color: #a1a1a1;
 
 	--text-color: #fff;
 	--text-alt-color: #000;
@@ -14,7 +16,7 @@
 	--primary-icon-color: #000;
 	--secondary-icon-color: #fff;
 
-	--background-4: #145E73;
+	--background-4: #145e73;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,6 +24,7 @@
 		--blue-color: #3358c5;
 		--green-color: #1fe910;
 		--red-color: #ff1a1a;
+		--gray-color: #e8e8e8;
 
 		--text-color: #fff;
 		--text-alt-color: #000;
@@ -31,6 +34,8 @@
 
 		--primary-icon-color: #000;
 		--secondary-icon-color: #fff;
+
+		--background-4: #145e73;
 	}
 }
 
@@ -43,7 +48,7 @@ body {
 
 body {
 	color: var(--foreground);
-    background: var(--background-4);
+	background: var(--background-4);
 	font-family: Arial, Helvetica, sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
@@ -94,12 +99,12 @@ button {
 	font-family: "Iconly";
 	font-style: normal;
 	font-weight: 400;
-	src: url("/fonts/mangos-font/iconly.eot?1729657856135");
+	src: url("/fonts/mangos-font/iconly.eot?1729753015208");
 	src: url("/fonts/mangos-font/iconly.eot?#iefix") format("embedded-opentype"),
-		url("/fonts/mangos-font/iconly.woff2?1729657856135") format("woff2"),
-		url("/fonts/mangos-font/iconly.woff?1729657856135") format("woff"),
-		url("/fonts/mangos-font/iconly.ttf?1729657856135") format("truetype"),
-		url("/fonts/mangos-font/iconly.svg?1729657856135#Iconly") format("svg");
+		url("/fonts/mangos-font/iconly.woff2?1729753015208") format("woff2"),
+		url("/fonts/mangos-font/iconly.woff?1729753015208") format("woff"),
+		url("/fonts/mangos-font/iconly.ttf?1729753015208") format("truetype"),
+		url("/fonts/mangos-font/iconly.svg?1729753015208#Iconly") format("svg");
 }
 
 [class="mangos"],
@@ -204,10 +209,27 @@ button {
 	content: "\e015";
 }
 
+.mangos-send_icon:before {
+	content: "\e016";
+}
+
 .container {
 	max-width: 1920px;
 	padding-inline: 100px;
 	margin-inline: auto;
+}
+
+.visually-hidden {
+	position: absolute !important;
+	width: 1px !important;
+	height: 1px !important;
+	margin: -1px !important;
+	border: 0 !important;
+	padding: 0 !important;
+	white-space: nowrap !important;
+	clip-path: inset(100%) !important;
+	clip: rect(0 0 0 0) !important;
+	overflow: hidden !important;
 }
 
 .auth-form {
