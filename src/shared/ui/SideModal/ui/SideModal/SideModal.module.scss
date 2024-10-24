@@ -1,6 +1,8 @@
 @import "@styles/style.scss";
 
 .side-modal {
+	$header-height: 68px;
+
 	@include flex($direction: column);
 
 	& {
@@ -40,7 +42,7 @@
 			background: var(--primary-background-color);
 			border-bottom: 1px solid var(--gray-color);
 			position: relative;
-			height: 68px;
+			height: $header-height;
 			width: 100%;
 		}
 	}
@@ -64,5 +66,6 @@
 	&__content {
 		height: 100%;
 		width: 100%;
+		max-height: calc(100% - $header-height);
 	}
 }

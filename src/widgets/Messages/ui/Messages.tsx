@@ -11,6 +11,8 @@ import { MessageForCreate } from "@/entities/Message/types/message";
 import { createMessage } from "@/entities/Message/api/message";
 import { MessageTypeEnum } from "@/entities/Message/types/messageType";
 import { useLocalStorage } from "@/shared/hooks/useLocalStorage";
+import { MangosResponse } from "@/shared/api/types/mangosResponse";
+import { getChat } from "@/entities/Chat/api/chat";
 
 export const Messages = () => {
 	const { user, loading, error, updateUser } = useUser();
@@ -40,8 +42,20 @@ export const Messages = () => {
 			return;
 		}
 		console.log("New message", newMessage.data);
-		// updateUser();
+		setMessageText("");
+
+		selectChat(chatSelected!);
 	};
+
+	const selectChat = async (chat: Chat) => {
+		const chatData: MangosResponse<Chat> = await getChat(chat.id, token);
+		
+		if(!chatData?.success) {
+			console.log("Failed to get chat data", chatData?.error);
+            return;
+		}
+		setChatSelected(chatData.data);
+	}
 
 	return (
 		<section className={`${styles["messages"]}`}>
@@ -60,7 +74,7 @@ export const Messages = () => {
 						<li
 							className={`${styles["messages__item"]}`}
 							key={chat.id}
-							onClick={() => setChatSelected(chat)}
+							onClick={() => selectChat(chat)}
 						>
 							<ChatItem {...chat} />
 						</li>
@@ -105,9 +119,9 @@ export const Messages = () => {
 					<ul className={`${styles["messages-current__list"]}`}>
 						{chatSelected?.messages?.map((message) => (
 							<li
-								className={`${styles["message-current__item"]} ${
+								className={`${styles["messages-current__item"]} ${
 									message.user_receiving?.id == user?.id
-										? styles["message-current__item--me"]
+										? styles["messages-current__item--me"]
 										: ""
 								}`}
 								key={message.id}
@@ -128,6 +142,7 @@ export const Messages = () => {
 						type="text"
 						placeholder="Введите сообщение:"
 						className={`${styles["messages-current__form-input"]}`}
+						value={messageText}
 						onChange={(e) => setMessageText(e.target.value)}
 					/>
 					<button className={`${styles["messages-current__form-button"]}`} type="submit">

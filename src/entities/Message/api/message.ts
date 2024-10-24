@@ -4,7 +4,6 @@ import { handleException } from "@/shared/helpers/handleException";
 import axios, { AxiosResponse } from "axios";
 import { endpoints } from "@/shared/api";
 import { handleResponse } from "@/shared/helpers/handleResponse";
-import { useLocalStorage } from "@/shared/hooks/useLocalStorage";
 
 export const createMessage = async (
 	message: MessageForCreate,

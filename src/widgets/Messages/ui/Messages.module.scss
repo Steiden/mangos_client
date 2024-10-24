@@ -68,10 +68,14 @@
 
 	&__current,
 	&-current {
+		$header-height: 70px;
+		$footer-height: 60px;
+
 		@include flex($direction: column);
 
 		& {
 			width: 100%;
+			max-height: 100%;
 		}
 
 		&__header {
@@ -79,9 +83,10 @@
 
 			& {
 				background: var(--primary-background-color);
+				border-bottom: 1px solid var(--gray-dark-color);
 				position: relative;
 				padding: 15px 20px;
-				height: 75px;
+				height: $header-height;
 				width: 100%;
 			}
 
@@ -117,17 +122,21 @@
 		}
 
 		&__content {
-			height: 100%;
-			width: 100%;
-		}
-		&__list {
-			@include flex($direction: column, $gap: 40px);
 			@include scrollbar;
 
 			& {
-				padding: 20px;
-				height: 100%;
+				flex: 1 0;
+				width: 100%;
+				max-height: calc(100% - $header-height - $footer-height);
 				overflow: scroll;
+			}
+		}
+		&__list {
+			@include flex($justify: flex-end, $direction: column, $gap: 40px);
+
+			& {
+				padding: 20px;
+				height: fit-content;
 			}
 		}
 		&__item {
@@ -143,7 +152,9 @@
 
 			& {
 				background: var(--primary-background-color);
+				border-top: 1px solid var(--gray-dark-color);
 				padding: 15px 20px;
+				height: $footer-height;
 				width: 100%;
 			}
 

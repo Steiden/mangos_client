@@ -1,6 +1,6 @@
 "use client";
 
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useEffect } from "react";
 import styles from "./SideModal.module.scss";
 import { createPortal } from "react-dom";
 
@@ -13,6 +13,7 @@ export type SideModalProps = React.HTMLAttributes<HTMLDivElement> & {
 };
 
 export const SideModal = ({ title, active, className, children, ...rest }: SideModalProps) => {
+
 	return (
 		<>
 			{createPortal(

@@ -30,21 +30,18 @@
         @include font($size: 20px, $weight: 400, $color: var(--text-alt-color));
 	}
 	&__info {
-        @include flex($gap: 15px);
+        @include flex($justify: flex-end, $align: center, $gap: 15px);
 
-        & {
-            padding: 2px;
-        }
+		& {
+			width: 100%;
+		}
 	}
 	&__span {
+		width: fit-content;
+
         &,
         &::before {
             @include font($size: 14px, $weight: 400, $color: var(--gray-color));
-
-            & {
-                align-self: flex-end;
-                width: 100%;
-            }
         }
 
 		&--read {
