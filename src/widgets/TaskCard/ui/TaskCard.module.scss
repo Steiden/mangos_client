@@ -1,0 +1,80 @@
+@import "@styles/style.scss";
+
+.task-card {
+	$text-color: var(--text-alt-color);
+
+	@include flex($direction: column);
+
+	& {
+		border: 5px solid var(--blue-color);
+		border-radius: 35px;
+		width: 350px;
+
+		overflow: hidden;
+	}
+
+	&__header,
+	&__title {
+		width: 100%;
+	}
+
+	&__header {
+		background: var(--blue-color);
+		height: 40px;
+		position: relative;
+
+		&::before {
+			content: "";
+
+			background: var(--yellow-color);
+			border-radius: 50%;
+
+			position: absolute;
+			top: 50%;
+			right: 10px;
+			translate: 0 -50%;
+
+			aspect-ratio: 1;
+			height: 50%;
+		}
+	}
+
+	&__content {
+		@include flex($direction: column, $gap: 20px);
+
+		& {
+			background: var(--primary-background-color);
+			padding: 25px 20px 35px 20px;
+		}
+	}
+
+	&__title {
+		@include font($size: 24px, $weight: 600, $color: $text-color);
+
+		& {
+			text-align: center;
+		}
+	}
+
+	&__text {
+		@include font($size: 18px, $color: $text-color);
+
+		& {
+			text-overflow: ellipsis;
+			overflow: hidden;
+			display: -moz-box;
+			-moz-box-orient: vertical;
+			display: -webkit-box;
+			-webkit-line-clamp: 10;
+			-webkit-box-orient: vertical;
+			line-clamp: 10;
+			box-orient: vertical;
+		}
+	}
+
+	&__tag-list {
+		@include flex($gap: 10px, $wrap: wrap);
+	}
+	&__tag-item {
+	}
+}

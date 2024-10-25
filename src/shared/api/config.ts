@@ -1,12 +1,12 @@
 import { AxiosRequestConfig } from "axios";
+import { useLocalStorage } from "usehooks-ts";
 
-// const item = localStorage.getItem('token');
-// const token = item ? JSON.parse(item) : '';
-
-// export const config: AxiosRequestConfig = {
-//     headers: {
-//         Authorization: "Bearer " + token,
-//     },
-//     withCredentials: true,
-//     withXSRFToken: true
-// }
+export const getConfig = (token: string): AxiosRequestConfig => {
+	return {
+		headers: {
+			Authorization: "Bearer " + token,
+		},
+		withCredentials: true,
+		withXSRFToken: true,
+	};
+};

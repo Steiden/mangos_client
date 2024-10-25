@@ -1,0 +1,13 @@
+@import "@styles/style.scss";
+
+.tag-item {
+    @include flex-center;
+    @include font($size: 14px, $color: var(--text-alt-color));
+
+    & {
+        background: var(--gray-color);
+        border-radius: 25px;
+        padding: 2px 8px;
+        height: 22px;
+    }
+}

@@ -1,7 +1,7 @@
 @import "@styles/style.scss";
 
 .header-item {
-	@include flex($align: center, $gap: 10px);
+	@include flex($align: flex-end, $gap: 10px);
 	@include font($size: 15px, $weight: 500);
 
 	& {
@@ -20,5 +20,10 @@
 		&::before {
 			font-size: 18px;
 		}
+	}
+
+	&__text {
+		height: 100%;
+		line-height: 1;
 	}
 }

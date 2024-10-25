@@ -19,31 +19,41 @@ import { Nullable } from "@/shared/types/nullable";
 import { User } from "@/entities/User/types/user";
 import { useLocalStorage } from "usehooks-ts";
 
+type NavItem = {
+	label: string;
+	icon?: string;
+	link: string;
+};
+
 export const Header = () => {
 	const [token] = useLocalStorage("token", "");
 	const user = useSelector<RootState, Nullable<User>>((state) => state.user.currentUser);
 	const dispatch = useDispatch<AppDispatch>();
-	const navItems = [
+	const navItems: NavItem[] = [
 		{
 			label: "Проекты",
 			icon: "mangos-folder_icon",
+			link: "/pages/projects",
 		},
 		{
 			label: "Автоматизация",
 			icon: "mangos-robot_icon",
+			link: "/pages/automations",
 		},
 		{
 			label: "События",
 			icon: "mangos-calendar_icon",
+			link: "/pages/events",
 		},
 		{
 			label: "Задачи",
 			icon: "mangos-task_icon",
+			link: "/pages/tasks",
 		},
 	];
 
 	useEffect(() => {
-		if(token) dispatch(updateUser(token));
+		if (token) dispatch(updateUser(token));
 	}, [token]);
 
 	return (
@@ -60,11 +70,14 @@ export const Header = () => {
 				<div className={`${styles["header__right"]}`}>
 					<ul className={`${styles["header__list"]}`}>
 						{navItems.map((navItem) => (
-							<NavItem
-								label={navItem.label}
-								icon={navItem.icon}
-								key={navItem.label}
-							/>
+							<li className={`${styles["header__item"]}`}>
+								<NavItem
+									label={navItem.label}
+									icon={navItem.icon}
+									link={navItem.link}
+									key={navItem.label}
+								/>
+							</li>
 						))}
 					</ul>
 					{user ? (

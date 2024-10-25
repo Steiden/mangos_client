@@ -3,6 +3,8 @@ import { TaskPriority } from "./taskPriority";
 import { Category } from "./category";
 import { User } from "@/entities/User/types/user";
 import { Project } from "@/entities/Project/types/project";
+import { MangosResponse } from "@/shared/api/types/mangosResponse";
+import { Tag } from "./tag";
 
 export type Task = {
 	id: number;
@@ -13,6 +15,7 @@ export type Task = {
 	execution_status: ExecutionStatus;
 	task_priority: TaskPriority;
 	category: Category;
+	tags: Tag[];
 	user: User;
 	project: Project;
 	created_at: Date;
@@ -28,5 +31,9 @@ export type TaskFillable = Pick<
 	| "execution_status"
 	| "task_priority"
 	| "category"
+	| "tags"
 	| "project"
 >;
+
+export type TasksResponse = MangosResponse<Task[]>;
+export type TaskResponse = MangosResponse<Task>;
