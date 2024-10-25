@@ -5,16 +5,24 @@ import styles from "./Header.module.scss";
 import Link from "next/link";
 import { HeaderProfile } from "@/shared/components/HeaderProfile/ui/HeaderProfile";
 import { SearchInput } from "@/shared/ui/SearchInput/ui/SearchInput";
-import { useUser } from "@/shared/hooks/useUser";
 import { Button } from "@/shared/ui/Button/ui/Button";
 import { ModalInvoker } from "@/shared/ui/Modal/ui/ModalInvoker/ModalInvoker";
 import { Login } from "./Login/Login";
 import { Registration } from "./Registration/Registration";
 import { SideModalInvoker } from "@/shared/ui/SideModal/ui/SideModalInvoker/SideModalInvoker";
 import { Messages } from "@/widgets/Messages/ui/Messages";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "@/shared/store/store";
+import { updateUser } from "@/entities/User/model/thunk";
+import { useEffect } from "react";
+import { Nullable } from "@/shared/types/nullable";
+import { User } from "@/entities/User/types/user";
+import { useLocalStorage } from "usehooks-ts";
 
 export const Header = () => {
-	const { user, loading, error } = useUser();
+	const [token] = useLocalStorage("token", "");
+	const user = useSelector<RootState, Nullable<User>>((state) => state.user.currentUser);
+	const dispatch = useDispatch<AppDispatch>();
 	const navItems = [
 		{
 			label: "Проекты",
@@ -33,6 +41,10 @@ export const Header = () => {
 			icon: "mangos-task_icon",
 		},
 	];
+
+	useEffect(() => {
+		if(token) dispatch(updateUser(token));
+	}, [token]);
 
 	return (
 		<div className={`${styles["header__wrapper"]}`}>
@@ -76,11 +88,15 @@ export const Header = () => {
 			</header>
 			<aside className={`${styles["header__side"]}`}>
 				<button className={`${styles["header__side-button"]}`}>
-					<span className={`mangos-bell_icon ${styles['header__side-button-icon']}`}></span>
+					<span
+						className={`mangos-bell_icon ${styles["header__side-button-icon"]}`}
+					></span>
 				</button>
 				<SideModalInvoker ModalContent={Messages} modalProps={{ title: "Сообщения" }}>
 					<button className={`${styles["header__side-button"]}`}>
-						<span className={`mangos-message_icon ${styles['header__side-button-icon']}`}></span>
+						<span
+							className={`mangos-message_icon ${styles["header__side-button-icon"]}`}
+						></span>
 					</button>
 				</SideModalInvoker>
 			</aside>

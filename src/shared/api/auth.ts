@@ -4,18 +4,13 @@ import { endpoints } from ".";
 import { Nullable } from "../types/nullable";
 import { handleResponse } from "../helpers/handleResponse";
 import { handleException } from "../helpers/handleException";
-import { useLocalStorage } from "../hooks/useLocalStorage";
 
 export const login = async (loginData: LoginData): Promise<Nullable<LoginResponse>> => {
 	try {
-		const [token] = useLocalStorage("token");
 		const response: AxiosResponse<LoginResponse> = await axios.post(
 			endpoints.login,
 			loginData,
 			{
-				headers: {
-					Authorization: "Bearer " + token,
-				},
 				withCredentials: true,
 				withXSRFToken: true,
 			}
@@ -26,9 +21,12 @@ export const login = async (loginData: LoginData): Promise<Nullable<LoginRespons
 	}
 };
 
-export const logout = async (): Promise<Nullable<Nullable<LogoutResponse>>> => {
+export const logout = async (token: string): Promise<Nullable<Nullable<LogoutResponse>>> => {
 	try {
 		const response: AxiosResponse<LogoutResponse> = await axios.get(endpoints.logout, {
+			headers: {
+				Authorization: 'Bearer' + token
+			},
 			withCredentials: true,
 			withXSRFToken: true,
 		});
@@ -38,9 +36,12 @@ export const logout = async (): Promise<Nullable<Nullable<LogoutResponse>>> => {
 	}
 };
 
-export const refresh = async (): Promise<Nullable<RefreshResponse>> => {
+export const refresh = async (token: string): Promise<Nullable<RefreshResponse>> => {
 	try {
 		const response: AxiosResponse<RefreshResponse> = await axios.get(endpoints.refresh, {
+			headers: {
+				Authorization: 'Bearer' + token
+			},
 			withCredentials: true,
 			withXSRFToken: true,
 		});

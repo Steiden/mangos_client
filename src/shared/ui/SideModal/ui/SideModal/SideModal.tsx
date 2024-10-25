@@ -37,7 +37,7 @@ export const SideModal = ({ title, active, className, children, ...rest }: SideM
 					</header>
 					<div className={`${styles["side-modal__content"]}`}>{children}</div>
 				</div>,
-				document.body
+				document?.body
 			)}
 		</>
 	);

@@ -1,14 +1,27 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { Dispatch, SetStateAction, useState } from "react";
 import { Modal, ModalProps } from "../Modal/Modal";
+import { ModalActive } from "@/shared/types/modal";
 
-type Props = React.HTMLAttributes<HTMLDivElement> & {
-	ModalContent: React.ComponentType;
+type Props<T> = React.HTMLAttributes<HTMLDivElement> & {
+	ModalContent: React.FC<
+		| T
+		| {
+				active: ModalActive;
+		  }
+	>;
 	modalProps?: Omit<ModalProps, "active">;
+	modalContentProps?: T;
 };
 
-export const ModalInvoker = ({ ModalContent, modalProps, children, ...rest }: Props) => {
+export const ModalInvoker = <T,>({
+	ModalContent,
+	modalProps,
+	modalContentProps,
+	children,
+	...rest
+}: Props<T>) => {
 	const [isActive, setIsActive] = useState<boolean>(false);
 
 	return (
@@ -17,7 +30,7 @@ export const ModalInvoker = ({ ModalContent, modalProps, children, ...rest }: Pr
 
 			{isActive && (
 				<Modal active={{ isActive, setIsActive }} {...modalProps}>
-					<ModalContent />
+					<ModalContent {...modalContentProps} active={{ isActive, setIsActive }} />
 				</Modal>
 			)}
 		</div>

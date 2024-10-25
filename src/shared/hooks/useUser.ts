@@ -4,10 +4,8 @@ import { useEffect, useState } from "react";
 import { endpoints } from "../api";
 import { useLocalStorage } from "./useLocalStorage";
 import { MeResponse } from "../api/types/auth";
-import { handleResponse } from "../helpers/handleResponse";
 import { handleException } from "../helpers/handleException";
 import { Nullable } from "../types/nullable";
-import { SuccessResponse } from "../api/types/successResponse";
 
 type UserError = string | null;
 

@@ -37,7 +37,7 @@ export const Modal = ({ className, children, active, ...rest }: ModalProps) => {
 						</button>
 					</div>
 				</div>,
-				document.body
+				document?.body
 			)}
 		</>
 	);

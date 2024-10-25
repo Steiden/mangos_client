@@ -4,17 +4,19 @@ import { createUser } from "@/entities/User/api/users";
 import { UserFillable } from "@/entities/User/types/user";
 import { login } from "@/shared/api/auth";
 import { LoginData, RegistrationData } from "@/shared/api/types/auth";
-import { useLocalStorage } from "@/shared/hooks/useLocalStorage";
+import { ModalActive } from "@/shared/types/modal";
 import { Button } from "@/shared/ui/Button/ui/Button";
 import { Input } from "@/shared/ui/Input/Input";
 import { useState } from "react";
+import { useLocalStorage } from "usehooks-ts";
 
 type Props = {
 	onRegister?: () => void;
+	active: ModalActive;
 };
 
-export const Registration = (props: Props) => {
-	const [token, setToken] = useLocalStorage("token");
+export const Registration = ({ onRegister, active }: Props) => {
+	const [token, setToken] = useLocalStorage("token", "");
 	const [formData, setFormData] = useState<RegistrationData>({
 		fio: "",
 		email: "",
@@ -35,13 +37,8 @@ export const Registration = (props: Props) => {
 		const registrationData = await createUser(userData);
 
 		if (!registrationData.success) {
-			console.log(`User registration failed: ${registrationData.error}`);
 			return;
 		}
-		console.log(
-			`User registration successful: ${registrationData.success}`,
-			registrationData.data
-		);
 	};
 
 	const logIn = async () => {
@@ -53,10 +50,8 @@ export const Registration = (props: Props) => {
 		const authData = await login(loginData);
 
 		if (!authData?.success) {
-			console.log(`User login failed: ${authData?.error}`);
 			return;
 		}
-		console.log(`User login successful: `, authData.data.token);
 		setToken(authData.data.token);
 	};
 
@@ -65,8 +60,9 @@ export const Registration = (props: Props) => {
 
 		regIn();
         logIn();
+		active.setIsActive(false);
         
-		if(props.onRegister) props.onRegister();
+		if(onRegister) onRegister();
 	};
 
 	return (

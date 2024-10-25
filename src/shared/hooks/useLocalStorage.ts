@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { handleException } from "../helpers/handleException";
 
-export function useLocalStorage<T>(key: string, initial: any = null): [T, (value: T) => void] {
+function useLocalStorage<T>(key: string, initial: any = null): [T, (value: T) => void] {
     const [storageItem, setStorageItem] = useState<T>(() => {
         try {
             const item = localStorage.getItem(key);

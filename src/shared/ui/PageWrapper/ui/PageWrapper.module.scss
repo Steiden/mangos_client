@@ -1,0 +1,13 @@
+@import "@styles/style.scss";
+
+.page-wrapper {
+    @include flex($direction: column, $gap: 50px);
+
+    & {
+        padding: 50px 100px;
+    }
+
+    &__title {
+        @include font($size: 46px, $weight: 700);
+    }
+}

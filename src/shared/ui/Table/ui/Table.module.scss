@@ -1,0 +1,62 @@
+@import "@styles/style.scss";
+
+.table {
+	border-collapse: collapse;
+	table-layout: fixed;
+	width: 100%;
+
+	&__wrapper {
+		border-radius: 30px;
+		border-bottom-left-radius: 8px;
+		border-bottom-right-radius: 8px;
+
+		width: 100%;
+
+		overflow: hidden;
+	}
+
+	&__thead {
+		background: rgba(51, 88, 197, 0.7);
+	}
+
+	&__tbody {
+		.table__tr {
+			&:nth-child(odd) {
+				background: rgba(255, 255, 255, 0.2);
+			}
+			&:nth-child(even) {
+				background: rgba(0, 0, 0, 0.1);
+			}
+		}
+	}
+
+	&__tr {
+	}
+
+	&__th,
+	&__td {
+		&:first-child {
+			text-align: left;
+		}
+		&:last-child {
+			text-align: right;
+		}
+	}
+
+	&__th {
+		@include font($size: 20px, $weight: 600);
+
+		& {
+			padding: 22px 40px;
+		}
+	}
+
+	&__td {
+		@include font($size: 18px, $weight: 400);
+
+		& {
+			padding: 21px 40px;
+			text-align: center;
+		}
+	}
+}
