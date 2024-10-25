@@ -2,7 +2,7 @@
 
 import { Task } from "@/entities/Task/types/task";
 import styles from "./TaskCard.module.scss";
-import { TagItem } from "./TagItem/tagItem";
+import { TagItem } from "./TagItem/TagItem";
 
 type Props = Task;
 
@@ -14,7 +14,7 @@ export const TaskCard = (props: Props) => {
 				<h2 className={`${styles["task-card__title"]}`}>{props.name}</h2>
 				<p className={`${styles["task-card__text"]}`}>{props.description}</p>
 				<p className={`${styles["task-card__text"]}`}>
-					{new Date(props.finished_at).toLocaleDateString("ru-RU")}
+					Срок: {new Date(props.finished_at).toLocaleDateString("ru-RU")}
 				</p>
 				<ul className={`${styles["task-card__tag-list"]}`}>
 					{props.tags?.map((tag) => (

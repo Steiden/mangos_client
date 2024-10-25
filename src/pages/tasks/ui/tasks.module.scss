@@ -5,9 +5,9 @@
     &__list {
         @include grid($rows: auto, $columns: repeat(auto-fit, minmax(200px, 300px)), $gap: 75px);
 
-        // @include desktop-l-above {
-        //     grid-template-columns: repeat(4, 1fr);
-        // }
+        @include desktop-l-above {
+            grid-template-columns: repeat(4, 1fr);
+        }
 
         & {
             width: 100%;
