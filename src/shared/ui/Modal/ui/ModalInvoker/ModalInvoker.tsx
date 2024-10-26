@@ -6,10 +6,9 @@ import { ModalActive } from "@/shared/types/modal";
 
 type Props<T> = React.HTMLAttributes<HTMLDivElement> & {
 	ModalContent: React.FC<
-		| T
-		| {
-				active: ModalActive;
-		  }
+		T & {
+			active: ModalActive;
+		}
 	>;
 	modalProps?: Omit<ModalProps, "active">;
 	modalContentProps?: T;
@@ -30,7 +29,7 @@ export const ModalInvoker = <T,>({
 
 			{isActive && (
 				<Modal active={{ isActive, setIsActive }} {...modalProps}>
-					<ModalContent {...modalContentProps} active={{ isActive, setIsActive }} />
+					<ModalContent {...(modalContentProps as T)} active={{ isActive, setIsActive }} />
 				</Modal>
 			)}
 		</div>

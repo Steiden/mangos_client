@@ -7,9 +7,11 @@ import { Task } from "@/entities/Task/types/task";
 import { getTasks } from "@/entities/Task/api/task";
 import { TaskCard } from "@/widgets/TaskCard/ui/TaskCard";
 import { useLocalStorage } from "usehooks-ts";
+import { ModalInvoker } from "@/shared/ui/Modal/ui/ModalInvoker/ModalInvoker";
+import { TaskModal } from "@/widgets/TaskCard/TaskModal/TaskModal";
 
 export const Tasks = () => {
-    const [token] = useLocalStorage("token", "");
+	const [token] = useLocalStorage("token", "");
 	const [tasks, setTasks] = useState<Task[]>([]);
 
 	useEffect(() => {
@@ -19,7 +21,7 @@ export const Tasks = () => {
 			if (!tasksData.success) return;
 			setTasks(tasksData.data);
 		}
-        fetchTasks();
+		fetchTasks();
 	}, []);
 
 	return (
@@ -27,7 +29,9 @@ export const Tasks = () => {
 			<ul className={`${styles["tasks__list"]}`}>
 				{tasks?.map((task) => (
 					<li className={`${styles["tasks__item"]}`}>
-						<TaskCard {...task} />
+						<ModalInvoker ModalContent={TaskModal}>
+							<TaskCard {...task} />
+						</ModalInvoker>
 					</li>
 				))}
 			</ul>
