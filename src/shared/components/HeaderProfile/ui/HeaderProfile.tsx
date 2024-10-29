@@ -25,16 +25,14 @@ export const HeaderProfile = ({ user }: Props) => {
 			id: 2,
 			label: "Настройки",
 			icon: "mangos-settings_icon",
-			// onClick: () => router.push("/pages/me/settings"),
-			onClick: () => {},
+			onClick: () => router.push("/pages/me/settings"),
 			separator: true,
 		},
 		{
 			id: 3,
 			label: "Выйти",
 			icon: "mangos-logout_icon",
-			// onClick: () => router.push("/auth/logout"),
-			onClick: () => {},
+			onClick: () => router.push("/auth/logout"),
 		},
 	];
 

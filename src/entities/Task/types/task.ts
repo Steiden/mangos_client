@@ -37,3 +37,4 @@ export type TaskFillable = Pick<
 
 export type TasksResponse = MangosResponse<Task[]>;
 export type TaskResponse = MangosResponse<Task>;
+export type TaskDeleteResponse = Omit<MangosResponse<any>, "data">;

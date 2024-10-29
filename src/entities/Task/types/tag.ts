@@ -1,3 +1,5 @@
+import { MangosResponse } from "@/shared/api/types/mangosResponse";
+
 export type Tag = {
     id: number;
     name: string;
@@ -6,3 +8,5 @@ export type Tag = {
 }
 
 export type TagFillable = Pick<Tag, "name">;
+
+export type TagsResponse = MangosResponse<Tag[]>;

@@ -28,9 +28,9 @@ export const Tasks = () => {
 		<PageWrapper className={`${styles["tasks"]}`} title="Задачи">
 			<ul className={`${styles["tasks__list"]}`}>
 				{tasks?.map((task) => (
-					<li className={`${styles["tasks__item"]}`}>
-						<ModalInvoker ModalContent={TaskModal}>
-							<TaskCard {...task} />
+					<li className={`${styles["tasks__item"]}`} key={task.id}>
+						<ModalInvoker ModalContent={TaskModal} modalContentProps={{ task }} modalProps={{ className: `${styles['tasks__modal']}` }}>
+							<TaskCard data={task} />
 						</ModalInvoker>
 					</li>
 				))}

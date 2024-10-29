@@ -1,16 +1,21 @@
 @import "@styles/style.scss";
 
 .modal {
-	background: #fff;
-	border: 2px solid var(--blue-color);
-	border-radius: 25px;
+	@include scrollbar;
 
-	padding: 35px 50px;
-	position: relative;
+	& {
+		background: #fff;
+		border: 2px solid var(--blue-color);
+		border-radius: 25px;
 
-	transition: all 0.3s linear;
+		padding: 35px 50px;
+		position: relative;
 
-	width: 500px;
+		transition: all 0.3s linear;
+
+		max-height: 80dvh;
+		width: 500px;
+	}
 
 	&:not(.modal--active) {
 		.modal__overlay {

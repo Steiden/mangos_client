@@ -1,8 +1,9 @@
 "use client";
 
-import { Dispatch, SetStateAction, useEffect } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import styles from "./SideModal.module.scss";
 import { createPortal } from "react-dom";
+import { Nullable } from "@/shared/types/nullable";
 
 export type SideModalProps = React.HTMLAttributes<HTMLDivElement> & {
 	title?: string;
@@ -13,32 +14,42 @@ export type SideModalProps = React.HTMLAttributes<HTMLDivElement> & {
 };
 
 export const SideModal = ({ title, active, className, children, ...rest }: SideModalProps) => {
+	const [modalRoot, setModalRoot] = useState<Nullable<HTMLElement>>(null);
+
+	useEffect(() => {
+		setModalRoot(document.getElementById("modal-root"));
+	}, []);
 
 	return (
 		<>
-			{createPortal(
-				<div
-					className={`${styles["side-modal"]} ${
-						active.isActive ? styles["side-modal--active"] : ""
-					}`}
-					{...rest}
-				>
-					<header className={`${styles["side-modal__header"]}`}>
-						<h3 className={`${styles["side-modal__title"]}`}>{title}</h3>
+			{modalRoot &&
+				createPortal(
+					<div
+						className={`${styles["side-modal"]} ${
+							active.isActive ? styles["side-modal--active"] : ""
+						}`}
+						{...rest}
+					>
+						<header className={`${styles["side-modal__header"]}`}>
+							<h3 className={`${styles["side-modal__title"]}`}>{title}</h3>
 
-						<button className={`${styles["side-modal__close"]}`} type="button" onClick={(e: React.MouseEvent) => {
-                            e.stopPropagation();
-                            active.setIsActive(false);
-                        }}>
-							<span
-								className={`mangos-close_icon ${styles["side-modal__close-icon"]}`}
-							></span>
-						</button>
-					</header>
-					<div className={`${styles["side-modal__content"]}`}>{children}</div>
-				</div>,
-				document?.body
-			)}
+							<button
+								className={`${styles["side-modal__close"]}`}
+								type="button"
+								onClick={(e: React.MouseEvent) => {
+									e.stopPropagation();
+									active.setIsActive(false);
+								}}
+							>
+								<span
+									className={`mangos-close_icon ${styles["side-modal__close-icon"]}`}
+								></span>
+							</button>
+						</header>
+						<div className={`${styles["side-modal__content"]}`}>{children}</div>
+					</div>,
+					modalRoot
+				)}
 		</>
 	);
 };

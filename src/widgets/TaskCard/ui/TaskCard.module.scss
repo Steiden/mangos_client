@@ -9,8 +9,6 @@
 		border: 5px solid var(--blue-color);
 		border-radius: 35px;
 		width: 350px;
-
-		overflow: hidden;
 	}
 
 	&__header,
@@ -20,6 +18,8 @@
 
 	&__header {
 		background: var(--blue-color);
+		border-top-left-radius: 30px;
+		border-top-right-radius: 30px;
 		height: 40px;
 		position: relative;
 
@@ -44,7 +44,10 @@
 
 		& {
 			background: var(--primary-background-color);
+			border-bottom-left-radius: 30px;
+			border-bottom-right-radius: 30px;
 			padding: 25px 20px 35px 20px;
+			width: 100%;
 		}
 	}
 
@@ -74,7 +77,43 @@
 
 	&__tag-list {
 		@include flex($gap: 10px, $wrap: wrap);
+		@include scrollbar;
+
+		& {
+			max-height: 350px;
+			width: 100%;
+		}
 	}
 	&__tag-item {
+		&--delete {
+			cursor: pointer;
+
+			&:hover {
+				opacity: 0.8;
+			}
+		}
+
+		&--add {
+			@include flex($align: center, $gap: 5px);
+			@include font($size: 14px, $color: var(--text-alt-color));
+
+			& {
+				cursor: pointer;
+
+				box-shadow: 0 1px 5px #00000077;
+				border-radius: 25px;
+				padding: 2px 8px;
+				height: 22px;
+			}
+
+			&:hover {
+				opacity: 0.8;
+			}
+		}
+	}
+	&__tag-icon {
+		&::before {
+			font-size: 12px;
+		}
 	}
 }

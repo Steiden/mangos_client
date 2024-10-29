@@ -18,6 +18,7 @@ import { useEffect } from "react";
 import { Nullable } from "@/shared/types/nullable";
 import { User } from "@/entities/User/types/user";
 import { useLocalStorage } from "usehooks-ts";
+import { allowedNodeEnvironmentFlags } from "process";
 
 type NavItem = {
 	label: string;
@@ -70,7 +71,7 @@ export const Header = () => {
 				<div className={`${styles["header__right"]}`}>
 					<ul className={`${styles["header__list"]}`}>
 						{navItems.map((navItem) => (
-							<li className={`${styles["header__item"]}`}>
+							<li className={`${styles["header__item"]}`} key={navItem.label}>
 								<NavItem
 									label={navItem.label}
 									icon={navItem.icon}

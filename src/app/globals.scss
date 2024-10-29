@@ -4,7 +4,7 @@
 	--blue-color: #3358c5;
 	--green-color: #1fe910;
 	--red-color: #ff1a1a;
-	--yellow-color: #FCCF19;
+	--yellow-color: #fccf19;
 	--gray-color: #e8e8e8;
 	--gray-dark-color: #a1a1a1;
 
@@ -100,12 +100,12 @@ button {
 	font-family: "Iconly";
 	font-style: normal;
 	font-weight: 400;
-	src: url("/fonts/mangos-font/iconly.eot?1729753015208");
+	src: url("/fonts/mangos-font/iconly.eot?1730222582991");
 	src: url("/fonts/mangos-font/iconly.eot?#iefix") format("embedded-opentype"),
-		url("/fonts/mangos-font/iconly.woff2?1729753015208") format("woff2"),
-		url("/fonts/mangos-font/iconly.woff?1729753015208") format("woff"),
-		url("/fonts/mangos-font/iconly.ttf?1729753015208") format("truetype"),
-		url("/fonts/mangos-font/iconly.svg?1729753015208#Iconly") format("svg");
+		url("/fonts/mangos-font/iconly.woff2?1730222582991") format("woff2"),
+		url("/fonts/mangos-font/iconly.woff?1730222582991") format("woff"),
+		url("/fonts/mangos-font/iconly.ttf?1730222582991") format("truetype"),
+		url("/fonts/mangos-font/iconly.svg?1730222582991#Iconly") format("svg");
 }
 
 [class="mangos"],
@@ -212,6 +212,14 @@ button {
 
 .mangos-send_icon:before {
 	content: "\e016";
+}
+
+.mangos-edit_icon:before {
+	content: "\e017";
+}
+
+.mangos-trash_icon:before {
+	content: "\e018";
 }
 
 .container {

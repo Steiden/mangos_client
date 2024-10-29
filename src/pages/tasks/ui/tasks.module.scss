@@ -15,4 +15,10 @@
     }
     &__item {
     }
+
+    &__modal {
+        & > div {
+            padding: 0;
+        }
+    }
 }
