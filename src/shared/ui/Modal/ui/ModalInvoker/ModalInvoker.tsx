@@ -4,7 +4,7 @@ import React, { Dispatch, SetStateAction, useState } from "react";
 import { Modal, ModalProps } from "../Modal/Modal";
 import { ModalActive } from "@/shared/types/modal";
 
-type Props<T> = React.HTMLAttributes<HTMLDivElement> & {
+export type ModalInvokerProps<T> = React.HTMLAttributes<HTMLDivElement> & {
 	ModalContent: React.FC<
 		T & {
 			active: ModalActive;
@@ -20,7 +20,7 @@ export const ModalInvoker = <T,>({
 	modalContentProps,
 	children,
 	...rest
-}: Props<T>) => {
+}: ModalInvokerProps<T>) => {
 	const [isActive, setIsActive] = useState<boolean>(false);
 
 	return (

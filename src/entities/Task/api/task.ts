@@ -15,6 +15,16 @@ export const getTasks = async (token: string): Promise<TasksResponse>  => {
     }
 }
 
+export const createTask = async (data: TaskFillable, token: string): Promise<TaskResponse> => {
+    try {
+        const response: AxiosResponse<TaskResponse> = await axios.post(endpoints.tasks, data, getConfig(token));
+        return handleResponse(response);
+    }
+    catch(ex) {
+        return handleException(ex);
+    }
+}
+
 export const updateTask = async (id: number, data: TaskFillable, token: string): Promise<TaskResponse> => {
     try {
         const response: AxiosResponse<TaskResponse> = await axios.put(`${endpoints.tasks}/${id}`, data, getConfig(token));

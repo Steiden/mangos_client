@@ -20,6 +20,11 @@ export const SideModal = ({ title, active, className, children, ...rest }: SideM
 		setModalRoot(document.getElementById("modal-root"));
 	}, []);
 
+	useEffect(() => {
+		if (active.isActive) document.body.style.maxHeight = "100dvh";
+		else document.body.style.maxHeight = "";
+	}, [active.isActive]);
+
 	return (
 		<>
 			{modalRoot &&

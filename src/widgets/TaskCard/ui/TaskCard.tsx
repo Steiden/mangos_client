@@ -13,7 +13,7 @@ import { ActionDropdownInvoker } from "@/shared/ui/ActionDropdown/ui/ActionDropd
 import { DropdownAction } from "@/shared/ui/ActionDropdown/types/actionDropdown";
 
 type Props = React.HTMLAttributes<HTMLDivElement> & {
-	data: Task;
+	data?: Task;
 	isEdit?: boolean;
 	taskData?: {
 		data: Nullable<TaskFillable>;
@@ -33,13 +33,12 @@ export const TaskCard = ({ className, data, isEdit, taskData, ...props }: Props)
 				return {
 					id: index,
 					label: tag.name,
-					onclick: () => {
-						console.log("Clicked");
+					onClick: () => {
 						taskData?.setData({ ...taskData.data!, tags: newTags });
 					},
 				};
 			})
-			.filter((item) => !data.tags.find((tag) => tag.id == item.id)) || [];
+			.filter((item) => !taskData?.data?.tags.find((tag) => tag.name == item.label)) || [];
 
 	useEffect(() => {
 		async function fetchTags() {
@@ -65,13 +64,13 @@ export const TaskCard = ({ className, data, isEdit, taskData, ...props }: Props)
 			<div className={`${styles["task-card__content"]}`}>
 				{!isEdit ? (
 					<>
-						<h2 className={`${styles["task-card__title"]}`}>{data.name}</h2>
-						<p className={`${styles["task-card__text"]}`}>{data.description}</p>
+						<h2 className={`${styles["task-card__title"]}`}>{data?.name}</h2>
+						<p className={`${styles["task-card__text"]}`}>{data?.description}</p>
 						<p className={`${styles["task-card__text"]}`}>
-							Срок: {new Date(data.finished_at).toLocaleDateString("ru-RU")}
+							Срок: {new Date(data?.finished_at || "").toLocaleDateString("ru-RU")}
 						</p>
 						<ul className={`${styles["task-card__tag-list"]}`}>
-							{data.tags?.map((tag) => (
+							{data?.tags?.map((tag) => (
 								<li className={`${styles["task-card__tag-item"]}`} key={tag.id}>
 									<TagItem {...tag} />
 								</li>

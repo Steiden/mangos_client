@@ -9,6 +9,8 @@ import { TaskCard } from "@/widgets/TaskCard/ui/TaskCard";
 import { useLocalStorage } from "usehooks-ts";
 import { ModalInvoker } from "@/shared/ui/Modal/ui/ModalInvoker/ModalInvoker";
 import { TaskModal } from "@/widgets/TaskCard/TaskModal/TaskModal";
+import { AddButton } from "@/shared/ui/AddButton/ui/AddButton";
+import { TaskCreate } from "@/widgets/TaskCard/TaskCreate/TaskCreate";
 
 export const Tasks = () => {
 	const [token] = useLocalStorage("token", "");
@@ -29,12 +31,22 @@ export const Tasks = () => {
 			<ul className={`${styles["tasks__list"]}`}>
 				{tasks?.map((task) => (
 					<li className={`${styles["tasks__item"]}`} key={task.id}>
-						<ModalInvoker ModalContent={TaskModal} modalContentProps={{ task }} modalProps={{ className: `${styles['tasks__modal']}` }}>
+						<ModalInvoker
+							ModalContent={TaskModal}
+							modalContentProps={{ task }}
+							modalProps={{ className: `${styles["tasks__modal"]}` }}
+						>
 							<TaskCard data={task} />
 						</ModalInvoker>
 					</li>
 				))}
 			</ul>
+
+			<AddButton
+				text="Добавить задачу"
+				ModalContent={TaskCreate}
+				modalProps={{ className: `${styles["tasks__modal"]}` }}
+			/>
 		</PageWrapper>
 	);
 };

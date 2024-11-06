@@ -1,0 +1,62 @@
+@import "@styles/style.scss";
+
+.task-modal {
+	position: relative;
+
+	&__card {
+		border: none;
+		border-radius: 22px;
+		height: 100%;
+		width: 100%;
+
+		& > div {
+			&::before {
+				display: none;
+			}
+		}
+	}
+
+	&__actions {
+		@include flex($direction: column);
+
+		& {
+			position: absolute;
+			top: 40px;
+			left: 100%;
+		}
+	}
+	&__action-button {
+		@include flex-center;
+
+		& {
+			border-top-right-radius: 10px;
+			border-bottom-right-radius: 10px;
+
+			padding: 8px;
+
+			height: 40px;
+			width: 40px;
+		}
+
+		&--edit {
+			background: var(--yellow-color);
+		}
+
+		&--delete {
+			background: var(--red-color);
+		}
+
+		&--accept {
+			background: var(--green-color);
+		}
+	}
+	&__action-icon {
+		&::before {
+			color: var(--secondary-icon-color);
+		}
+	}
+
+	.mangos-close_icon::before {
+		color: var(--secondary-icon-color);
+	}
+}
