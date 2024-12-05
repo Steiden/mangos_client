@@ -18,7 +18,6 @@ import { useEffect } from "react";
 import { Nullable } from "@/shared/types/nullable";
 import { User } from "@/entities/User/types/user";
 import { useLocalStorage } from "usehooks-ts";
-import { allowedNodeEnvironmentFlags } from "process";
 
 type NavItem = {
 	label: string;
@@ -34,22 +33,22 @@ export const Header = () => {
 		{
 			label: "Проекты",
 			icon: "mangos-folder_icon",
-			link: "/pages/projects",
+			link: "/projects",
 		},
 		{
 			label: "Автоматизация",
 			icon: "mangos-robot_icon",
-			link: "/pages/automations",
+			link: "/automations",
 		},
 		{
 			label: "События",
 			icon: "mangos-calendar_icon",
-			link: "/pages/events",
+			link: "/events",
 		},
 		{
 			label: "Задачи",
 			icon: "mangos-task_icon",
-			link: "/pages/tasks",
+			link: "/tasks",
 		},
 	];
 
